@@ -1,7 +1,6 @@
 package main
 
 import (
-	"maps"
 	"slices"
 	"testing"
 )
@@ -18,7 +17,6 @@ var (
 	knownList1       = []int{3, 4, 2, 1, 3, 3}
 	knownList2       = []int{4, 3, 5, 3, 9, 3}
 	knownPart1Result = 11
-	knownLocationIds = map[int]int{3: 9, 4: 1}
 	knownPart2Result = 31
 )
 
@@ -43,15 +41,8 @@ func TestSolvePart1(t *testing.T) {
 	}
 }
 
-func TestLocationMapping(t *testing.T) {
-	locationIds := mapLocationIds(knownList1, knownList2)
-	if !maps.Equal(locationIds, knownLocationIds) {
-		t.Fatalf("MISMATCH\n%v\n%v", locationIds, knownLocationIds)
-	}
-}
-
 func TestSolvePart2(t *testing.T) {
-	result := solvePart2(knownLocationIds)
+	result := solvePart2(knownList1, knownList2)
 	if result != knownPart2Result {
 		t.Fatalf("MISMATCH\n%v\n%v", result, knownPart2Result)
 	}

@@ -24,8 +24,7 @@ func main() {
 	resultP1 := solvePart1(list1, list2)
 	fmt.Println(resultP1)
 
-	locationIds := mapLocationIds(list1, list2)
-	resultP2 := solvePart2(locationIds)
+	resultP2 := solvePart2(list1, list2)
 	fmt.Println(resultP2)
 }
 
@@ -70,22 +69,14 @@ func absDiffInt(x, y int) int {
 	return y - x
 }
 
-func solvePart2(locationIds map[int]int) int {
+func solvePart2(list1, list2 []int) int {
 	sum := 0
-	for k, v := range locationIds {
-		sum += k * v
-	}
-	return sum
-}
-
-func mapLocationIds(list1, list2 []int) map[int]int {
-	locationIds := make(map[int]int)
 	for _, x := range list1 {
 		for _, y := range list2 {
 			if x == y {
-				locationIds[x]++
+				sum += y
 			}
 		}
 	}
-	return locationIds
+	return sum
 }
